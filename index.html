@@ -32,8 +32,11 @@
             });
 
             function createWord(){
+                // to get a random index number
                 let randomIndex = Math.floor(Math.random()* myArray.length)
+                // to get a random name
                 let tempWord = myArray[randomIndex];
+                // here we make an Array of a name randomly using our function below (randomArray()) like this => ["a","i","c","m","c","a"]
                 let rand = randomArray(tempWord.split(""));
                 message.innerHTML = rand.join("");
                 return tempWord;
@@ -45,6 +48,7 @@
                 let j = Math.floor(Math.random() * (i + 1));
                 arr[i] = arr[j];
                 arr[j] = temp;
+                console.log("rndm", arr)
             }
             return arr;
         }
