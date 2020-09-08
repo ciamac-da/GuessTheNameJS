@@ -19,15 +19,51 @@
             const guess = document.querySelector("input");
             const button = document.querySelector("button");
             const myArray = ["sebastian", "ciamac", "shahin", "kadir", "tomislav", "alexandru", "vardges", "maxim"];
+            // before start
             let inPlay = false;
+            // not mixed names
+            let scramble="";
+            //mixed up names
+            let scrambled="";
+            // How many guesses?
+            let score = 0
+
     
             button.addEventListener("click", function () {
                 console.log("Clicked");
                 if (!inPlay) {
-                    inPlay = true;
+                    // If i click on start button
+                    inPlay    = true;
+                    // giving button value
                     button.innerHTML = "Guess";
+                    // to make start button hidden as soon as I click on start button! 
                     guess.classList.toggle("hidden");
-                    console.log(createWord());
+                    // after I wrote something in input and pressed check the guess it should be removed no matter 
+                    // that the answer(guess) is coorect or not! 
+                    guess.value = "";
+                    // not mixed up names
+                    scramble  = createWord();
+                    // to make mixed up names
+                    scrambled = randomArray(scramble.split("")).join("")
+                    // to show us mixed names in browser
+                    message.innerHTML = scrambled
+                } else {
+                    // making a variable that stores input value 
+                    let tempGuess = guess.value
+                    // making score +1 after every wrong try
+                    score++
+                    // if the names I write matched with not mixed name
+                    if(tempGuess === scramble){
+                        //game over
+                        inPlay = false;
+                        // sending a message when the game is over
+                        message.innerHTML = "Good job "+ scramble  +" was correct."+" It took "+ score + " guesses!"
+                        button.innerHTML = "Start"
+                        // to make buuton hidden as soon as I click on start
+                        guess.classList.toggle("hidden");
+                    }else {
+                        message.innerHTML = scrambled + " is not correct! Try again!"
+                    }
                 }
             });
 
@@ -37,8 +73,8 @@
                 // to get a random name
                 let tempWord = myArray[randomIndex];
                 // here we make an Array of a name randomly using our function below (randomArray()) like this => ["a","i","c","m","c","a"]
-                let rand = randomArray(tempWord.split(""));
-                message.innerHTML = rand.join("");
+                //let rand = randomArray(tempWord.split(""));
+                //message.innerHTML = rand.join("");
                 return tempWord;
             }
             function randomArray(arr) {
