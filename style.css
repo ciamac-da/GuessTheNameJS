@@ -1,7 +1,17 @@
 body{
     font-family: 'Kufam', cursive;
+    background-image: url("./guess.jpg");
 }
 
 .hidden {
     display: none;
+}
+.card{
+    width: 350px;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
+button {
+    margin: 15px;
 }
