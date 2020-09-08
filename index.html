@@ -56,17 +56,19 @@
                     let tempGuess = guess.value
                     // making score +1 after every wrong try
                     score++
+                    guess.value = "";
+
                     // if the names I write matched with not mixed name
                     if(tempGuess === scramble){
                         //game over
                         inPlay = false;
                         // sending a message when the game is over
                         message.innerHTML = "Good job "+ scramble  +" was correct."+" It took "+ score + " guesses!"
-                        button.innerHTML = "Start"
+                        button.innerHTML = "Start new round"
                         // to make buuton hidden as soon as I click on start
                         guess.classList.toggle("hidden");
                     }else {
-                        message.innerHTML = scrambled + " is not correct! Try again!"
+                        message.innerHTML = scrambled + " is a mixed up name and your guess wan not correct! Try again to find the right name!"
                     }
                 }
             });
