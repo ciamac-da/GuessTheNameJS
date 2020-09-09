@@ -69,7 +69,7 @@
                         // to make buuton hidden as soon as I click on start
                         guess.classList.toggle("hidden");
                     }else {
-                        message.innerHTML = scrambled + " is a mixed up name and your guess wan not correct! Try again to find the right name!"
+                        message.innerHTML = scrambled + " is a mixed up name and your guess was not correct! Try again to find the right name!"
                     }
                 }
             });
@@ -83,15 +83,22 @@
                 //let rand = randomArray(tempWord.split(""));
                 //message.innerHTML = rand.join("");
                 return tempWord;
+                console.log("rndm", tempWord)
+
             }
+            // this is how to mix characteres array
             function randomArray(arr) {
+                // -1 because the law of counting in js starts from 0
+                // I wrote for loop inverse:)
             for (let i = arr.length - 1; i > 0; i--) {
                 let temp = arr[i];
-
+                console.log("rndm", temp)
+                // to get  random of characteres
                 let j = Math.floor(Math.random() * (i + 1));
+                console.log("rndm", j)
+                // to replace i  and j
                 arr[i] = arr[j];
                 arr[j] = temp;
-                console.log("rndm", arr)
             }
             return arr;
         }
